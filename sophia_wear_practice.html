@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>София — тренажёр глагола wear</title>
+  <style>
+    :root { --teal:#159b83; --dark:#193b4a; --mint:#e8f8f3; --ink:#263843; --muted:#617580; --line:#dce9e8; }
+    * { box-sizing:border-box; }
+    body { margin:0; padding:24px 16px 48px; background:linear-gradient(180deg,#f2fbf8,#f7f8fc 400px); color:var(--ink); font:16px/1.55 "Segoe UI",Arial,sans-serif; }
+    main { max-width:820px; margin:auto; }
+    header { text-align:center; padding:18px 10px 24px; }
+    .eyebrow { color:var(--teal); font-weight:800; letter-spacing:.08em; text-transform:uppercase; font-size:.82rem; }
+    h1 { color:var(--dark); font-size:clamp(1.8rem,5vw,2.7rem); margin:6px 0; line-height:1.15; }
+    .subtitle { color:var(--muted); margin:8px auto 0; max-width:590px; }
+    .rule, .card { background:white; border:1px solid var(--line); border-radius:18px; box-shadow:0 8px 24px #173b4a0b; }
+    .rule { background:var(--mint); border-left:6px solid var(--teal); padding:18px 20px; margin-bottom:22px; }
+    .rule strong { color:#087d68; }
+    .example { display:inline-block; margin-top:6px; font-size:1.08rem; color:var(--dark); font-weight:700; }
+    .card { padding:22px; margin:18px 0; }
+    h2 { color:var(--dark); margin:0 0 6px; font-size:1.3rem; }
+    .instructions { color:var(--muted); margin:0 0 17px; }
+    .question { padding:14px 0; border-bottom:1px dashed var(--line); }
+    .question:last-of-type { border-bottom:0; }
+    .prompt { font-weight:700; margin:0 0 9px; }
+    label.choice { display:flex; gap:10px; align-items:flex-start; padding:9px 12px; border:1px solid var(--line); border-radius:11px; margin:7px 0; cursor:pointer; transition:.15s; }
+    label.choice:hover { background:#f2fbf8; border-color:#8dd5c5; }
+    input[type=radio] { accent-color:var(--teal); margin-top:5px; }
+    input[type=text] { width:100%; max-width:570px; border:1px solid #bfd0d2; border-radius:10px; padding:11px 13px; font:inherit; }
+    input[type=text]:focus { outline:3px solid #159b8326; border-color:var(--teal); }
+    .bank { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 12px; }
+    .chip { background:#eff8f6; color:#176e61; border:1px solid #c8e9e1; border-radius:999px; padding:5px 11px; font-weight:650; font-size:.92rem; }
+    .btn { background:var(--teal); color:white; border:0; border-radius:11px; padding:11px 18px; font:700 1rem inherit; font-size:1rem; cursor:pointer; transition:.15s; }
+    .btn:hover { background:#0e806d; transform:translateY(-1px); }
+    .btn.secondary { background:#e9f1f2; color:var(--dark); }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:15px; }
+    .result { display:none; margin-top:13px; padding:11px 14px; border-radius:11px; font-weight:700; }
+    .result.good { display:block; background:#e4f7e9; color:#176234; }
+    .result.try { display:block; background:#fff3dd; color:#805400; }
+    .result.bad { display:block; background:#ffebeb; color:#8b3030; }
+    .scorebar { display:flex; align-items:center; justify-content:space-between; gap:10px; background:var(--dark); color:white; border-radius:14px; padding:12px 16px; margin:0 0 20px; }
+    .scorebar span:last-child { background:#ffffff20; padding:3px 10px; border-radius:999px; font-weight:800; white-space:nowrap; }
+    .tiny { font-size:.88rem; color:var(--muted); }
+    footer { text-align:center; color:var(--muted); font-size:.9rem; padding:12px; }
+    @media(max-width:520px) { body{padding:14px 12px 30px}.card{padding:17px}.scorebar{align-items:flex-start;flex-direction:column} }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">English mini-practice</div>
+    <h1>Тренажёр для Софии: <em>WEAR</em> 👕</h1>
+    <p class="subtitle">Три коротких задания, чтобы уверенно говорить об одежде. Выполняй по порядку и проверяй себя!</p>
+  </header>
+
+  <div class="scorebar" aria-live="polite"><span>✨ Баллы Софии</span><span id="score">0 / 9</span></div>
+
+  <section class="rule" aria-label="Правило">
+    <strong>Запомни:</strong> когда называем одежду после <b>wear</b>, не ставим <b>in</b>.
+    <br><span class="example">Sophia is wearing a green T-shirt.</span>
+    <div class="tiny">Скажи вслух: «Что на мне надето?» — <b>What am I wearing?</b></div>
+  </section>
+
+  <section class="card" id="activity1">
+    <h2>1. Выбери правильный вариант</h2>
+    <p class="instructions">Нажми на один ответ в каждом вопросе.</p>
+    <div class="question"><p class="prompt">1) Sophia is wearing…</p>
+      <label class="choice"><input type="radio" name="a1q1" value="0"> in a red dress.</label>
+      <label class="choice"><input type="radio" name="a1q1" value="1"> a red dress.</label>
+    </div>
+    <div class="question"><p class="prompt">2) What are you wearing…</p>
+      <label class="choice"><input type="radio" name="a1q2" value="1"> today?</label>
+      <label class="choice"><input type="radio" name="a1q2" value="0"> in today?</label>
+    </div>
+    <div class="question"><p class="prompt">3) My friend is wearing…</p>
+      <label class="choice"><input type="radio" name="a1q3" value="0"> in a cool cap.</label>
+      <label class="choice"><input type="radio" name="a1q3" value="1"> a cool cap.</label>
+    </div>
+    <div class="actions"><button class="btn" onclick="checkChoices()">Проверить ответы</button></div>
+    <div class="result" id="result1" role="status"></div>
+  </section>
+
+  <section class="card" id="activity2">
+    <h2>2. Убери лишнее слово</h2>
+    <p class="instructions">Перепиши каждое предложение правильно. Подсказка: убери только <b>in</b>.</p>
+    <div class="question"><p class="prompt">1) Sophia is wearing in a green T-shirt.</p><input type="text" id="a2q1" autocomplete="off" placeholder="Напиши правильное предложение"></div>
+    <div class="question"><p class="prompt">2) I am wearing in my comfortable shoes.</p><input type="text" id="a2q2" autocomplete="off" placeholder="Напиши правильное предложение"></div>
+    <div class="question"><p class="prompt">3) He is wearing in a warm jacket today.</p><input type="text" id="a2q3" autocomplete="off" placeholder="Напиши правильное предложение"></div>
+    <div class="actions"><button class="btn" onclick="checkRewrite()">Проверить предложения</button></div>
+    <div class="result" id="result2" role="status"></div>
+  </section>
+
+  <section class="card" id="activity3">
+    <h2>3. Собери предложение</h2>
+    <p class="instructions">Используй слова-подсказки и напиши всё предложение в правильном порядке.</p>
+    <div class="question"><p class="prompt">Подсказки:</p><div class="bank"><span class="chip">today</span><span class="chip">wearing</span><span class="chip">blue jeans</span><span class="chip">is</span><span class="chip">Sophia</span></div>
+      <input type="text" id="a3q1" autocomplete="off" placeholder="Собери предложение здесь"></div>
+    <div class="question"><p class="prompt">Теперь составь вопрос: «Что на тебе надето?»</p><div class="bank"><span class="chip">wearing</span><span class="chip">you</span><span class="chip">are</span><span class="chip">What</span></div>
+      <input type="text" id="a3q2" autocomplete="off" placeholder="Собери вопрос здесь"></div>
+    <div class="actions"><button class="btn" onclick="checkBuild()">Проверить</button><button class="btn secondary" onclick="resetAll()">Начать заново</button></div>
+    <div class="result" id="result3" role="status"></div>
+  </section>
+  <footer>Ты справишься, София! 🌟</footer>
+</main>
+<script>
+  const earned = {a1:0,a2:0,a3:0};
+  function normalized(value) {
+    return value.trim().toLowerCase().replace(/[’']/g,"'").replace(/[.!?]/g,'').replace(/\s+/g,' ');
+  }
+  function showResult(id, correct, total, success, partial, fail) {
+    const el=document.getElementById(id);
+    el.className='result '+(correct===total?'good':correct>0?'try':'bad');
+    el.textContent=correct===total?success:(correct>0?partial:fail);
+  }
+  function updateScore(key, points) {
+    earned[key]=points;
+    document.getElementById('score').textContent=Object.values(earned).reduce((a,b)=>a+b,0)+' / 9';
+  }
+  function checkChoices() {
+    let correct=0, missing=false;
+    for(let i=1;i<=3;i++) {
+      const chosen=document.querySelector('input[name="a1q'+i+'"]:checked');
+      if(!chosen) missing=true; else if(chosen.value==='1') correct++;
+    }
+    if(missing) { showResult('result1',0,3,'','','Пожалуйста, ответь на все три вопроса.'); return; }
+    updateScore('a1',correct);
+    showResult('result1',correct,3,'Превосходно! Все три ответа правильные — без лишнего in! 🎉',`Хорошее начало: ${correct} из 3 верно. Проверь, не добавила ли ты in перед одеждой.`,`Пока 0 из 3. Вспомни правило: wear + одежда, без in. Попробуй ещё раз!`);
+  }
+  function checkRewrite() {
+    const answers=['sophia is wearing a green t-shirt','i am wearing my comfortable shoes','he is wearing a warm jacket today'];
+    let correct=0, missing=false;
+    answers.forEach((answer,i)=>{const value=document.getElementById('a2q'+(i+1)).value;if(!value.trim())missing=true;if(normalized(value)===answer)correct++;});
+    if(missing) { showResult('result2',0,3,'','','Заполни все три предложения, пожалуйста.'); return; }
+    updateScore('a2',correct);
+    showResult('result2',correct,3,'Супер! Все предложения исправлены идеально! 🌟',`Уже ${correct} из 3 верно. Посмотри ещё раз: после wearing сразу идёт предмет одежды.`,`Проверь порядок слов и убери только in. Попробуй ещё раз!`);
+  }
+  function checkBuild() {
+    const one=normalized(document.getElementById('a3q1').value);
+    const two=normalized(document.getElementById('a3q2').value);
+    const ok1=['sophia is wearing blue jeans today','sophia is wearing blue jeans today'].includes(one);
+    const ok2=['what are you wearing','what are you wearing today'].includes(two);
+    const correct=Number(ok1)+Number(ok2);
+    if(!one||!two) { showResult('result3',0,2,'','','Заполни оба поля, чтобы проверить задание.'); return; }
+    updateScore('a3',correct);
+    const el=document.getElementById('result3');
+    el.className='result '+(correct===2?'good':correct?'try':'bad');
+    el.textContent=correct===2?'Отлично! Ты собрала оба предложения! 🧩':correct===1?`Одно предложение получилось! ${ok1?'Проверь вопрос: “What are you wearing?”':'Проверь порядок слов: “Sophia is wearing blue jeans today.”'}`:'Подсказка: “Sophia is wearing blue jeans today.” и “What are you wearing?” Попробуй ещё раз!';
+  }
+  function resetAll() {
+    document.querySelectorAll('input[type=radio]').forEach(input=>input.checked=false);
+    document.querySelectorAll('input[type=text]').forEach(input=>input.value='');
+    document.querySelectorAll('.result').forEach(el=>{el.className='result';el.textContent='';});
+    Object.keys(earned).forEach(key=>earned[key]=0);
+    document.getElementById('score').textContent='0 / 9';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+</script>
+</body>
+</html>
